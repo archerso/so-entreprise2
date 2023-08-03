@@ -1,0 +1,20 @@
+
+          {% extends "base.html.twig" %}
+ {% block body %}
+  <h1 class="text-center my-4"> Ajout salarie</h1>
+     <div class="container">
+    {{form_start(formsalarie)}}
+        {{form_row(formsalarie.prenom)}}
+        {{form_row(formsalarie.name)}}
+        {{form_row(formsalarie.telephone)}}
+        {{form_row(formsalarie.email)}}
+        {{form_row(formsalarie.adresse)}}
+        {{form_row(formsalarie.poste)}}
+        {{form_row(formsalarie.salaire)}}
+        {{form_row(formsalarie.datedenaissance)}}
+        
+
+    {# <button class="btn btn-primary">Ajouter</button> #}
+    {{form_end(formsalarie)}}
+</div>
+ {% endblock %}
