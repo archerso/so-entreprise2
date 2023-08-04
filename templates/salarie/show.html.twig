@@ -1,0 +1,61 @@
+{% extends "base.html.twig" %}
+
+{% block title %}MONTRER la BDD Salaries {% endblock %}
+
+{% block body %}
+
+        <h1>Tableau des salaries</h1>
+<table class="table table-bordered border-primary">
+    <thead>
+        <tr>
+            <td>name</td>
+            <td>prenom</td>
+            <td>telephone</td>
+            <td>email</td>
+            <td>adresse</td>
+            <td>poste</td>
+            <td>salaire</td>
+            <td>date de naissance</td>
+        </tr>
+    </thead>
+    <tbody>
+      {# formasalarie represente le tableau de tous les salaries #}
+    {# {{ dump(formsalarie) }} #}
+    <div class="container mt-5 text-center">
+    {% for salarie in formsalarie %}
+        
+        {# <pre>
+            {{ dump(salarie) }}
+        </pre> #}
+        <tr>
+        <td>{{ salarie.name }}</td>
+        <td>{{ salarie.prenom }}</td>
+        <td>{{ salarie.telephone }}</td>
+        <td>{{ salarie.email }}</td>
+        <td>{{ salarie.adresse }}</td>
+        <td>{{ salarie.poste }}</td>
+        <td>{{ salarie.salaire }}</td>
+        <td>{{ salarie.datedenaissance|date('d/m/Y') }} </td>
+        </tr>
+        {# <p>{{ salarie.datedenaissance }}</p>  #}
+        {% endfor %}
+    </div>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>name</td>
+            <td>prenom</td>
+            <td>telephone</td>
+            <td>email</td>
+            <td>adresse</td>
+            <td>poste</td>
+            <td>salaire</td>
+            <td>date de naissance</td>
+        </tr>
+    </tfoot>
+
+   
+</table>
+    
+
+{% endblock %}
