@@ -23,10 +23,15 @@ class SalarieController extends AbstractController
     }
 
     #[Route('/salarie/salarie', name: 'salarie_form')]
-    // Request permet de recuperer les GLOBAL, 
-    public function ajout(Request $request, EntityManagerInterface $manager): Response
+    #[Route('/salarie/modifier', name: 'salarie_modifier')]
+    #[Route('/salarie/supprimer/{id}', name: 'salarie_supprimer')]
+    //Methode Ajout du fichier salarie.html.twig Request permet de recuperer les GLOBAL, 
+    public function ajout(Request $request, EntityManagerInterface $manager, Employe $employe = null): Response
     {
-        $employe = new Employe;
+        if($employe == null){
+             $employe = new Employe;
+            
+        }
         // je crée une variable dans laquelle je stocke mon formulaire crée grace à createForm() et a son formBuilder (FormsalarieType)
         // click droit pour importer la class
 
@@ -44,6 +49,7 @@ class SalarieController extends AbstractController
         // dans render le se second le premier parametre est le chemin le SECOND EST UN TABLEAU
         return $this->render('salarie/salarie.html.twig', [
             'formsalarie' => $form,
+            'EditMode' => $employe->getId() !== null,
         ]);
     }
     #[Route('/salarie/show', name: 'showsalarie')]
@@ -54,5 +60,13 @@ class SalarieController extends AbstractController
             'formsalarie' => $employe,
             // 'SalarieController' => 'Bienvenue au salarié ',
         ]);
+    }
+    #[Route('/salarie/supprimer/{id}', name: 'salarie_supprimer')]
+    public function supprimer (Employe $employe, EntityManagerInterface $manager)
+    {
+        $manager->remove($employe);
+        $manager->flush();
+        return $this->redirectToRoute('showsalarie');
+
     }
 }

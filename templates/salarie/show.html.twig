@@ -16,6 +16,8 @@
             <td>poste</td>
             <td>salaire</td>
             <td>date de naissance</td>
+            <td>modifier</td>
+            <td>supprimer</td>
         </tr>
     </thead>
     <tbody>
@@ -36,6 +38,8 @@
         <td>{{ salarie.poste }}</td>
         <td>{{ salarie.salaire }}</td>
         <td>{{ salarie.datedenaissance|date('d/m/Y') }} </td>
+        <td> <a href="{{ path("salarie_modifier", {id: salarie.id}) }}">modifier</a> </td>
+        <td> <a href="{{ path("salarie_supprimer", {id: salarie.id}) }}">supprimer</a> </td>
         </tr>
         {# <p>{{ salarie.datedenaissance }}</p>  #}
         {% endfor %}
@@ -51,6 +55,8 @@
             <td>poste</td>
             <td>salaire</td>
             <td>date de naissance</td>
+            <td>modifier</td>
+            <td>supprimer</td>
         </tr>
     </tfoot>
 
